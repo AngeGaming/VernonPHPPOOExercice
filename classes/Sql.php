@@ -4,25 +4,25 @@ class Sql
 {
     private string $serverName = "localhost";
     private string $userName = "root";
-    private string $dataBase = "poo";
+    private string $database = "poo";
     private string $userPassword = "";
     private object $connexion;
 
     public function __construct()
     {
-        try{
+        try {
             $this->connexion = new PDO("mysql:host=$this->serverName;
             dbname=$this->database", $this->userName, $this->userPassword);
             $this->connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
-        
-        catch(PDOException $e){
+
+        catch(PDOException $e) {
             die("Erreur : " . $e->getMessage());
         }
     }
 
     public function __destruct()
     {
-        unset ($this->connexion);
+        unset($this->connexion);
     }
 }
